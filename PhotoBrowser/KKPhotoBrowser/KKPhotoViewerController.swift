@@ -39,8 +39,28 @@ class KKPhotoViewerController: UIViewController {
         imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: { (receivedSize, expectedSize) in
             
         }) { (image, error, cache, url) in
-            
+            if let image = image {
+                self.setImagePosition(image)
+            }
         }
+    }
+    
+    private func setImagePosition(_ image: UIImage) {
+        let size = imageSize(WithScreen: image)
+        
+        imageView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        scrollView?.contentSize = size
+        
+        if let scrollView = scrollView, size.height < scrollView.bounds.size.height {
+            let offsetY = (scrollView.bounds.size.height - size.height) * 0.5
+            scrollView.contentInset = UIEdgeInsetsMake(offsetY, 0, offsetY, 0)
+        }
+    }
+    
+    private func imageSize(WithScreen image: UIImage) -> CGSize {
+        var size = UIScreen.main.bounds.size
+        size.height = image.size.height * size.width / image.size.width
+        return size
     }
     
     private func prepareUI() {
@@ -48,6 +68,6 @@ class KKPhotoViewerController: UIViewController {
         view.addSubview(scrollView!)
         
         imageView.center = view.center
-        view.addSubview(imageView)
+        scrollView!.addSubview(imageView)
     }
 }

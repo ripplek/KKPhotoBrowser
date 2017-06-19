@@ -21,7 +21,7 @@ class KKPhotoViewerController: UIViewController {
         let urlString = urlString.replacingOccurrences(of: "/bmiddle/", with: "/large/")
         url = URL(string: urlString)
         self.photoIndex = photoIndex
-        self.placeholder = placeholder
+        self.placeholder = UIImage(cgImage: placeholder.cgImage!, scale: 1.0, orientation: placeholder.imageOrientation)
         self.imageView = UIImageView(image: placeholder)
         super.init(nibName: nil, bundle: nil)
     }

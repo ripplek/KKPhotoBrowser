@@ -18,7 +18,7 @@ class MainViewController: UITableViewController, PhotoCellDelegate {
         tableView.register(PhotoCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        self.modalPresentationCapturesStatusBarAppearance = true
         loadData()
     }
     
@@ -57,5 +57,22 @@ class MainViewController: UITableViewController, PhotoCellDelegate {
         return cell
     }
     
+}
+
+extension UINavigationController {
+    //    open override var preferredStatusBarStyle: UIStatusBarStyle {
+    //        return .lightContent
+    //    }
+    //
+    //    open override var prefersStatusBarHidden: Bool {
+    //        return true
+    //    }
     
+    open override var childViewControllerForStatusBarStyle: UIViewController? {
+        return topViewController
+    }
+    
+    open override var childViewControllerForStatusBarHidden: UIViewController? {
+        return topViewController
+    }
 }

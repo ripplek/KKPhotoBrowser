@@ -13,6 +13,7 @@ class PhotoUrls {
     static func photos(count: Int) -> Array<String> {
         var pic_urls: Array<String> {
             return ["http://ww2.sinaimg.cn/bmiddle/72635b6agw1eyqehvujq1j218g0p0qai.jpg",
+                    "http://wx4.sinaimg.cn/mw690/6bea75f6gy1fgrjyberl7j20hu1zcu0x.jpg",
                     "http://ww2.sinaimg.cn/bmiddle/e67669aagw1f1v6w3ya5vj20hk0qfq86.jpg",
                     "http://ww3.sinaimg.cn/bmiddle/61e36371gw1f1v6zegnezg207p06fqv6.gif",
                     "http://ww4.sinaimg.cn/bmiddle/7f02d774gw1f1dxhgmh3mj20cs1tdaiv.jpg",

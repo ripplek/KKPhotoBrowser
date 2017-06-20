@@ -8,14 +8,20 @@
 
 import UIKit
 
-struct KKPhotoBrowserPhotos {
+class KKPhotoBrowserPhotos {
     
     /// 选中照片索引
-    let selectoedIndex: Int
+    var selectedIndex: Int
     
     /// 照片 url 字符串数组
     let urls: Array<String>
     
     /// 父视图图像视图数组，便于交互转场
     let parentImageViews: Array<UIImageView>
+    
+    init(selectedIndex: Int, urls: Array<String>, parentImageViews: Array<UIImageView>) {
+        self.selectedIndex = selectedIndex
+        self.urls = urls
+        self.parentImageViews = parentImageViews
+    }
 }

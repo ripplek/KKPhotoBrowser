@@ -10,16 +10,16 @@ import UIKit
 
 class KKPhotoBrowserController: UIViewController {
     
-    let photos: KKPhotoBrowserPhotos
-    
+    var photos: KKPhotoBrowserPhotos
     var statusBarHidden: Bool = false
     
     let animator: KKPhotoBrowserAnimator
     
     var currentViewer: KKPhotoViewerController?
     
+    
     init(selectedIndex: Int, urls: Array<String>, parentImageViews: Array<UIImageView>) {
-        photos = KKPhotoBrowserPhotos(selectoedIndex: selectedIndex, urls: urls, parentImageViews: parentImageViews)
+        photos = KKPhotoBrowserPhotos(selectedIndex: selectedIndex, urls: urls, parentImageViews: parentImageViews)
         animator = KKPhotoBrowserAnimator(photos: photos)
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .custom
@@ -32,8 +32,13 @@ class KKPhotoBrowserController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setNeedsStatusBarAppearanceUpdate()
         prepareUI()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
      //MARK: - 监听方法
@@ -62,7 +67,7 @@ class KKPhotoBrowserController: UIViewController {
         pageController.dataSource = self
         pageController.delegate = self
         
-        let viewer = viewerWithIndex(photos.selectoedIndex)
+        let viewer = viewerWithIndex(photos.selectedIndex)
         pageController.setViewControllers([viewer], direction: .forward, animated: true, completion: nil)
         
         view.addSubview(pageController.view)
@@ -95,7 +100,8 @@ extension KKPhotoBrowserController: UIPageViewControllerDataSource, UIPageViewCo
         
         var index = (viewController as! KKPhotoViewerController).photoIndex
         index-=1
-        if index <= 0 {
+        
+        if index < 0 {
             return nil
         }
         
@@ -107,6 +113,7 @@ extension KKPhotoBrowserController: UIPageViewControllerDataSource, UIPageViewCo
         
         var index = (viewController as! KKPhotoViewerController).photoIndex
         index+=1
+        
         if index >= photos.urls.count {
             return nil
         }
@@ -114,7 +121,16 @@ extension KKPhotoBrowserController: UIPageViewControllerDataSource, UIPageViewCo
         return viewerWithIndex(index)
     }
     
-    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        if finished {
+            
+            if let viewer = pageViewController.viewControllers?[0] as? KKPhotoViewerController {
+                photos.selectedIndex = viewer.photoIndex
+                currentViewer = viewer
+            }
+        }
+    }
 }
 
 extension KKPhotoBrowserController: UIGestureRecognizerDelegate {
@@ -123,3 +139,5 @@ extension KKPhotoBrowserController: UIGestureRecognizerDelegate {
         return true
     }
 }
+
+

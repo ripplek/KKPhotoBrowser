@@ -14,8 +14,10 @@ class KKPhotoViewerController: UIViewController {
     let photoIndex: Int
     let placeholder: UIImage
     
-    var scrollView: UIScrollView?
-    let imageView: UIImageView
+    var scrollView: UIScrollView!
+    var imageView: UIImageView
+    
+    let progressView = KKPhotoProgressView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
     
     init(urlString: String, photoIndex: Int, placeholder: UIImage) {
         let urlString = urlString.replacingOccurrences(of: "/bmiddle/", with: "/large/")
@@ -37,7 +39,9 @@ class KKPhotoViewerController: UIViewController {
     
     private func loadImage() {
         imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: { (receivedSize, expectedSize) in
-            
+            print(receivedSize,expectedSize)
+            self.progressView.progress = Float(receivedSize) / Float(expectedSize)
+            print(self.progressView.progress ?? "")
         }) { (image, error, cache, url) in
             if let image = image {
                 self.setImagePosition(image)
@@ -65,9 +69,21 @@ class KKPhotoViewerController: UIViewController {
     
     private func prepareUI() {
         scrollView = UIScrollView(frame: view.bounds)
-        view.addSubview(scrollView!)
+        view.addSubview(scrollView)
         
         imageView.center = view.center
-        scrollView!.addSubview(imageView)
+        scrollView.addSubview(imageView)
+        
+        progressView.center = view.center
+        view.addSubview(progressView)
+        
+        progressView.progress = 1.0
+        
+    }
+    
+    override var description: String {
+        return "\(self.photoIndex)"
     }
 }
+
+

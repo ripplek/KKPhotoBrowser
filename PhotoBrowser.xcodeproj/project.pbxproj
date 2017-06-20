@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		666968E41EF9157B00CB0804 /* KKPhotoProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666968E31EF9157B00CB0804 /* KKPhotoProgressView.swift */; };
 		669D7B6B1EF3C1E20079A231 /* KKPhotoBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669D7B6A1EF3C1E20079A231 /* KKPhotoBrowserController.swift */; };
 		669D7B6D1EF3C23B0079A231 /* KKPhotoBrowserPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669D7B6C1EF3C23B0079A231 /* KKPhotoBrowserPhotos.swift */; };
 		669D7B6F1EF3C6520079A231 /* KKPhotoBrowserAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669D7B6E1EF3C6520079A231 /* KKPhotoBrowserAnimator.swift */; };
@@ -25,6 +26,7 @@
 		06BC2A460FBA6DB7686A2BAF /* Pods-PhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBrowser/Pods-PhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		0A92A3E1D43D16CC664E49D5 /* Pods-PhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBrowser/Pods-PhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		309B80E623632F934C785ECF /* Pods_PhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		666968E31EF9157B00CB0804 /* KKPhotoProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPhotoProgressView.swift; sourceTree = "<group>"; };
 		669D7B6A1EF3C1E20079A231 /* KKPhotoBrowserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPhotoBrowserController.swift; sourceTree = "<group>"; };
 		669D7B6C1EF3C23B0079A231 /* KKPhotoBrowserPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPhotoBrowserPhotos.swift; sourceTree = "<group>"; };
 		669D7B6E1EF3C6520079A231 /* KKPhotoBrowserAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPhotoBrowserAnimator.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		669D7B691EF3C1BB0079A231 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				666968E31EF9157B00CB0804 /* KKPhotoProgressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				66DA138F1EF271B600C594E1 /* MainViewController.swift in Sources */,
 				669D7B6F1EF3C6520079A231 /* KKPhotoBrowserAnimator.swift in Sources */,
 				66DA13911EF2722400C594E1 /* PhotoUrls.swift in Sources */,
+				666968E41EF9157B00CB0804 /* KKPhotoProgressView.swift in Sources */,
 				669D7B711EF3CB7A0079A231 /* KKPhotoViewerController.swift in Sources */,
 				66DA137D1EF2716800C594E1 /* AppDelegate.swift in Sources */,
 			);

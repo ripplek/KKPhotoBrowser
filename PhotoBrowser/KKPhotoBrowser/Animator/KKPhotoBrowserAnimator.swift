@@ -31,12 +31,12 @@ class KKPhotoBrowserAnimator: NSObject {
     
     /// 生成 dummy 图像
     private var dummyImage: UIImage {
-        return photos.parentImageViews[photos.selectoedIndex].image!
+        return photos.parentImageViews[photos.selectedIndex].image!
     }
     
     /// 父视图参考图像视图
     private var parentImageView: UIImageView {
-        return photos.parentImageViews[photos.selectoedIndex]
+        return photos.parentImageViews[photos.selectedIndex]
     }
     
     /// 根据图像计算展现目标尺寸
@@ -107,6 +107,7 @@ extension KKPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
         if let fromIV = fromImageView {
             dummyIV.frame = containerView.convert(fromIV.frame, from: fromIV.superview)
         }
+        
         dummyIV.alpha = fromView.alpha
         
         containerView.addSubview(dummyIV)

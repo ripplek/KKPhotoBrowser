@@ -39,9 +39,9 @@ class KKPhotoViewerController: UIViewController {
     
     private func loadImage() {
         imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: { (receivedSize, expectedSize) in
-            print(receivedSize,expectedSize)
+            
             self.progressView.progress = Float(receivedSize) / Float(expectedSize)
-            print(self.progressView.progress ?? "")
+            
         }) { (image, error, cache, url) in
             if let image = image {
                 self.setImagePosition(image)
@@ -79,10 +79,19 @@ class KKPhotoViewerController: UIViewController {
         
         progressView.progress = 1.0
         
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 2.0
+        scrollView.delegate = self
     }
     
     override var description: String {
         return "\(self.photoIndex)"
+    }
+}
+
+extension KKPhotoViewerController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }
 

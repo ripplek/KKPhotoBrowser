@@ -13,7 +13,6 @@ class KKPhotoProgressView: UIView {
     /// 进度
     var progress: Float? {
         didSet {
-            print("progress--\(progress!)")
             setNeedsDisplay()
         }
     }

@@ -19,10 +19,10 @@ class KKPhotoBrowserAnimator: NSObject {
     
     private let photos: KKPhotoBrowserPhotos
     
-    private var isPresenting: Bool = false
+    fileprivate var isPresenting: Bool = false
     
     /// 生成 dummy 图像视图
-    private var dummyImageView: UIImageView {
+    fileprivate var dummyImageView: UIImageView {
         let iv = UIImageView(image: dummyImage)
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
@@ -35,12 +35,12 @@ class KKPhotoBrowserAnimator: NSObject {
     }
     
     /// 父视图参考图像视图
-    private var parentImageView: UIImageView {
+    fileprivate var parentImageView: UIImageView {
         return photos.parentImageViews[photos.selectedIndex]
     }
     
     /// 根据图像计算展现目标尺寸
-    private func presentRectWithImageView(_ imageView: UIImageView) -> CGRect {
+    fileprivate func presentRectWithImageView(_ imageView: UIImageView) -> CGRect {
         let image = imageView.image
         guard image != nil else { return imageView.frame }
         
@@ -62,7 +62,7 @@ class KKPhotoBrowserAnimator: NSObject {
 extension KKPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

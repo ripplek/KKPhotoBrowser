@@ -15,6 +15,8 @@ class MainViewController: UITableViewController, PhotoCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "KKPhotoBrowser"
+        
         tableView.register(PhotoCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension

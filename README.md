@@ -24,6 +24,17 @@
 * Xcode8.0+
 * Swift3.0+
 
+## Installation with CocoaPods
+通过cocoaPods将KKPhotoBrowser集成到你的项目中，首先要确保你已经安装了cocoaPods，然后执行
+`$pod init`
+配置`podfile`文件
+```
+target 'TargetName' do
+pod 'KKPhotoBrowser'
+end
+```
+配置完成后执行
+`$pod install`
 ## usage
 ```
 let browserVC = KKPhotoBrowserController(selectedIndex: currentIndex, urls: photoUrls, parentImageViews: cell.visibaleImageViews())

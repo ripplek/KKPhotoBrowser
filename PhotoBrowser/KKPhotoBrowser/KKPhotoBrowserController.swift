@@ -60,6 +60,11 @@ class KKPhotoBrowserController: UIViewController {
     }
     
     @objc private func doubleTapGesture(recognizer: UIGestureRecognizer) {
+        
+        if currentViewer!.scrollView.zoomScale == 2.0 {
+            zoomOut_In = false
+        }
+        
         var scale: Float
         if zoomOut_In {
             scale = 2.0

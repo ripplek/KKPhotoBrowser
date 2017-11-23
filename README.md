@@ -1,5 +1,5 @@
 # KKPhotoBrowser
-纯Swift轻量级的图片浏览器
+Swift轻量级的图片浏览器
 
 ![](https://img.shields.io/badge/releases-v0.0.2-green.svg) ![](https://img.shields.io/badge/pod-v0.0.2-brightgreen.svg) [![apm](https://img.shields.io/apm/l/vim-mode.svg)](https://github.com/ripplek/KKPhotoBrowser/blob/master/LICENSE) ![](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
 

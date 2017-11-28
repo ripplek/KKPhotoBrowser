@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KKPhotoBrowserController: UIViewController {
+public class KKPhotoBrowserController: UIViewController {
     
     var photos: KKPhotoBrowserPhotos
     var statusBarHidden: Bool = false
@@ -30,7 +30,7 @@ class KKPhotoBrowserController: UIViewController {
         return label
     }()
     
-    init(selectedIndex: Int, urls: Array<String>, parentImageViews: Array<UIImageView>) {
+    public init(selectedIndex: Int, urls: Array<String>, parentImageViews: Array<UIImageView>) {
         photos = KKPhotoBrowserPhotos(selectedIndex: selectedIndex, urls: urls, parentImageViews: parentImageViews)
         animator = KKPhotoBrowserAnimator(photos: photos)
         super.init(nibName: nil, bundle: nil)
@@ -38,11 +38,11 @@ class KKPhotoBrowserController: UIViewController {
         transitioningDelegate = animator
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
 //        setNeedsSztatusBarAppearanceUpdate()
@@ -213,7 +213,7 @@ class KKPhotoBrowserController: UIViewController {
 
 extension KKPhotoBrowserController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     @available(iOS 5.0, *)
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         var index = (viewController as! KKPhotoViewerController).photoIndex
         index-=1
@@ -226,7 +226,7 @@ extension KKPhotoBrowserController: UIPageViewControllerDataSource, UIPageViewCo
     }
     
     @available(iOS 5.0, *)
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
         var index = (viewController as! KKPhotoViewerController).photoIndex
         index+=1
@@ -238,7 +238,7 @@ extension KKPhotoBrowserController: UIPageViewControllerDataSource, UIPageViewCo
         return viewerWithIndex(index)
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
         if finished {
             
@@ -252,7 +252,7 @@ extension KKPhotoBrowserController: UIPageViewControllerDataSource, UIPageViewCo
 
 extension KKPhotoBrowserController: UIGestureRecognizerDelegate {
     @available(iOS 3.2, *)
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }

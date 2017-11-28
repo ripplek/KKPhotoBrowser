@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "KKPhotoBrowser"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "A PhotoBorwser Library for iOS."
   s.homepage     = "https://github.com/ripplek/KKPhotoBrowser"
   s.license      = { :type => "MIT", :file => "LICENSE" }

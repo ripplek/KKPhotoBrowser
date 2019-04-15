@@ -56,7 +56,7 @@ class PhotoCell: UITableViewCell {
         prepareUI()
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         prepareUI()
     }
@@ -80,17 +80,21 @@ class PhotoCell: UITableViewCell {
         for urlString in photos_urls {
             let imageV = pictureView.subviews[index] as! UIImageView
             let url = URL(string: urlString)
-            imageV.kf.setImage(with: url, completionHandler: { (image, error, cache, url) in
-                
-                // 单图等比例缩放
-                if index == 0 && self.photos_urls.count == 1 && image != nil {
-                    let height = pictureViewSize.height
-                    let width = image!.size.width * height / image!.size.height
-                    imageV.frame = CGRect(x: 0, y: 0, width: width, height: height)
-                } else if index == 0 {
-                    imageV.frame = CGRect(x: 0, y: 0, width: self.layout.itemSize.width, height: self.layout.itemSize.width)
+            imageV.kf.setImage(with: url) { (result) in
+                switch result {
+                case .success(let res):
+                    // 单图等比例缩放
+                    if index == 0, self.photos_urls.count == 1 {
+                        let height = pictureViewSize.height
+                        let width = res.image.size.width * height / res.image.size.height
+                        imageV.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                    } else if index == 0 {
+                        imageV.frame = CGRect(x: 0, y: 0, width: self.layout.itemSize.width, height: self.layout.itemSize.width)
+                    }
+                case .failure(let error):
+                    print(error)
                 }
-            })
+            }
             
             imageV.isHidden = false
             index+=1

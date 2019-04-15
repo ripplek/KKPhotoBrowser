@@ -149,7 +149,7 @@ public class KKPhotoBrowserController: UIViewController {
     @objc func image(image: UIImage, DidFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         messageLabel.text = (error == nil) ? "保存成功" : "保存失败"
         
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIViewAnimationOptions(rawValue: 0), animations: {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: UIView.AnimationOptions(rawValue: 0), animations: {
             self.messageLabel.transform = CGAffineTransform.identity
         }) { (completion) in
             UIView.animate(withDuration: 0.5, animations: {
@@ -167,7 +167,7 @@ public class KKPhotoBrowserController: UIViewController {
         view.backgroundColor = .black
         
         // 分页控制器
-        let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey:20])
+        let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewController.OptionsKey.interPageSpacing:20])
         pageController.dataSource = self
         pageController.delegate = self
         
@@ -175,8 +175,8 @@ public class KKPhotoBrowserController: UIViewController {
         pageController.setViewControllers([viewer], direction: .forward, animated: true, completion: nil)
         
         view.addSubview(pageController.view)
-        addChildViewController(pageController)
-        pageController.didMove(toParentViewController: self)
+        addChild(pageController)
+        pageController.didMove(toParent: self)
         
         currentViewer = viewer
         

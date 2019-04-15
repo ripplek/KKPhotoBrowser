@@ -40,12 +40,13 @@ class KKPhotoViewerController: UIViewController {
     
     private func loadImage() {
         imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: { (receivedSize, expectedSize) in
-            
             self.progressView.progress = Float(receivedSize) / Float(expectedSize)
-            
-        }) { (image, error, cache, url) in
-            if let image = image {
-                self.setImagePosition(image)
+        }) { (result) in
+            switch result {
+            case .success(let res):
+                self.setImagePosition(res.image)
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -58,7 +59,7 @@ class KKPhotoViewerController: UIViewController {
         
         if let scrollView = scrollView, size.height < scrollView.bounds.size.height {
             let offsetY = (scrollView.bounds.size.height - size.height) * 0.5
-            scrollView.contentInset = UIEdgeInsetsMake(offsetY, 0, offsetY, 0)
+            scrollView.contentInset = UIEdgeInsets(top: offsetY, left: 0, bottom: offsetY, right: 0)
         }
     }
     

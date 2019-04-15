@@ -71,7 +71,7 @@ extension KKPhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
     
     func presentTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
-        
+        containerView.backgroundColor = UIColor.black
         let dummyIV = dummyImageView
         let parentIV = parentImageView
         

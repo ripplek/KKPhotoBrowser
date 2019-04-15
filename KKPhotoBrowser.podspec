@@ -8,6 +8,8 @@ Pod::Spec.new do |s|
   s.summary      = "A PhotoBorwser Library for iOS."
   s.homepage     = "https://github.com/ripplek/KKPhotoBrowser"
   s.license      = { :type => "MIT", :file => "LICENSE" }
+  s.swift_version = "5.0"
+  s.swift_versions = ['4.0', '4.2', '5.0']
   s.author       = { "张坤" => "ripple_k@163.com" }
   s.source       = { :git => "https://github.com/ripplek/KKPhotoBrowser.git", :tag => "#{s.version}" }
   s.ios.deployment_target = "10.0"
